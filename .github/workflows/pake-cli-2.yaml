@@ -1,5 +1,4 @@
 name: Build App With Pake CLI
-
 on:
   workflow_dispatch:
     inputs:
@@ -30,7 +29,7 @@ on:
         required: false
         default: '780'
       proxy_url:
-        description: 'Proxy URL, Optional'
+        description: 'Proxy Url, Optional'
         required: false
       fullscreen:
         description: 'Fullscreen, At startup, Optional'
@@ -56,7 +55,7 @@ on:
           - 'deb'
           - 'appimage'
           - 'rpm'
-          
+
 jobs:
   build:
     name: ${{ inputs.platform }}
@@ -133,7 +132,6 @@ jobs:
           ICON: ${{ inputs.icon }}
           HEIGHT: ${{ inputs.height }}
           WIDTH: ${{ inputs.width }}
-          PROXY_URL: ${{ inputs.proxy_url }}
           HIDE_TITLE_BAR: ${{ inputs.hide_title_bar }}
           FULLSCREEN: ${{ inputs.fullscreen }}
           MULTI_ARCH: ${{ inputs.multi_arch }}
