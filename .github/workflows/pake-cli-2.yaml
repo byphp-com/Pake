@@ -31,6 +31,11 @@ on:
       proxy_url:
         description: 'Proxy Url, Optional'
         required: false
+      use_local_file:
+        description: 'Use Local File, Optional'
+        required: false
+        type: boolean
+        default: false
       fullscreen:
         description: 'Fullscreen, At startup, Optional'
         required: false
@@ -134,6 +139,7 @@ jobs:
           WIDTH: ${{ inputs.width }}
           PROXY_URL: ${{ inputs.proxy_url }}
           HIDE_TITLE_BAR: ${{ inputs.hide_title_bar }}
+          USE_LOCAL_FILE: ${{ inputs.use_local_file }}
           FULLSCREEN: ${{ inputs.fullscreen }}
           MULTI_ARCH: ${{ inputs.multi_arch }}
           TARGETS: ${{ inputs.targets }}

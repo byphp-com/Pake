@@ -15,6 +15,7 @@ console.log('height: ', process.env.HEIGHT);
 console.log('width: ', process.env.WIDTH);
 console.log('proxy_url: ', process.env.PROXY_URL);
 console.log('fullscreen: ', process.env.FULLSCREEN);
+console.log('use-local-file: ', process.env.USE_LOCAL_FILE);
 console.log('hide-title-bar: ', process.env.HIDE_TITLE_BAR);
 console.log('is multi arch? only for Mac: ', process.env.MULTI_ARCH);
 console.log('targets type? only for Linux: ', process.env.TARGETS);
@@ -31,10 +32,13 @@ if (process.env.HIDE_TITLE_BAR === 'true') {
   params = `${params} --hide-title-bar`;
 }
 
+if (process.env.USE_LOCAL_FILE === 'true') {
+  params = `${params} --use-local-file`;
+}
+
 if (process.env.FULLSCREEN === 'true') {
   params = `${params} --fullscreen`;
 }
-
 if (process.env.MULTI_ARCH === 'true') {
   exec('rustup target add aarch64-apple-darwin');
   params = `${params} --multi-arch`;
