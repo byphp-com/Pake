@@ -28,6 +28,9 @@ on:
         description: 'Height, Optional'
         required: false
         default: '780'
+      proxy_url:
+        description: 'Http Or Https Proxy URL, Optional'
+        required: false
       fullscreen:
         description: 'Fullscreen, At startup, Optional'
         required: false
@@ -52,7 +55,7 @@ on:
           - 'deb'
           - 'appimage'
           - 'rpm'
-
+          
 jobs:
   build:
     name: ${{ inputs.platform }}
@@ -129,6 +132,7 @@ jobs:
           ICON: ${{ inputs.icon }}
           HEIGHT: ${{ inputs.height }}
           WIDTH: ${{ inputs.width }}
+          PROXY_URL: ${{ inputs.proxy_url }}
           HIDE_TITLE_BAR: ${{ inputs.hide_title_bar }}
           FULLSCREEN: ${{ inputs.fullscreen }}
           MULTI_ARCH: ${{ inputs.multi_arch }}
