@@ -89,7 +89,7 @@ const main = async () => {
 
   // 循环输出键和值
   for (const key in extDataJson) {
-      if (dataJson.hasOwnProperty(key)) {
+      if (extDataJson.hasOwnProperty(key)) {
           params = `${params} ${key} ${extDataJson[key]}`;
       }
   }
