@@ -29,7 +29,7 @@ on:
         required: false
         default: '780'
       proxy_url:
-        description: 'Http Or Https Proxy URL, Optional'
+        description: 'Proxy URL, Optional'
         required: false
       fullscreen:
         description: 'Fullscreen, At startup, Optional'
