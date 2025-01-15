@@ -28,6 +28,9 @@ on:
         description: 'Height, Optional'
         required: false
         default: '780'
+      ext_data:
+        description: 'more config, Optional'
+        required: false
       fullscreen:
         description: 'Fullscreen, At startup, Optional'
         required: false
@@ -38,9 +41,6 @@ on:
         required: false
         type: boolean
         default: false
-      ext_data:
-        description: 'more config, Optional'
-        required: false
       targets:
         description: 'Targets, Linux only, Optional'
         required: false
@@ -120,16 +120,16 @@ jobs:
 
       - name: Build with pake-cli
         run: |
-          node ./script/build_with_pake_cli.js
+          node ./script/build_with_pake_cli_v2.js
         env:
           URL: ${{ inputs.url }}
           NAME: ${{ inputs.name }}
           ICON: ${{ inputs.icon }}
           HEIGHT: ${{ inputs.height }}
           WIDTH: ${{ inputs.width }}
+          EXT_DATA: ${{ inputs.ext_data }}
           HIDE_TITLE_BAR: ${{ inputs.hide_title_bar }}
           FULLSCREEN: ${{ inputs.fullscreen }}
-          EXT_DATA: ${{ inputs.ext_data }}
           TARGETS: ${{ inputs.targets }}
 
       - name: Upload archive

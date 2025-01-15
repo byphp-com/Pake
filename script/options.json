@@ -1,0 +1,45 @@
+{
+    "all": {
+        "--name": "YourAppName",
+        "--icon": "path/to/icon.icns",
+        "--height": 780,
+        "--width": 1200,
+        "--activation-shortcut": "CmdOrControl+Shift+P",
+        "--app-version": "1.0.0",
+        "--targets": "deb",
+        "--user-agent": "",
+        "--system-tray-icon": "path/to/tray-icon.png",
+        "--installer-language": "en-US",
+        "--inject": [
+            "./tools/style.css",
+            "./tools/hotkey.js"
+        ],
+        "--proxy-url": "http://your.proxy.url",
+        "--always-on-top": false,
+        "--dark-mode": false,
+        "--disabled-web-shortcuts": false,
+        "--multi-arch": false,
+        "--show-system-tray": false,
+        "--use-local-file": false,
+        "--hide-title-bar": false,
+        "--fullscreen": false,
+        "--debug": false
+    },
+    "github workflow未定义参数": {
+        "--activation-shortcut": "Control+Shift+P",
+        "--system-tray-icon": "path/to/tray-icon.png",
+        "--installer-language": "en-US",
+        "--proxy-url": "http://your.proxy.url",
+        "--app-version": "1.0.0",
+        "--user-agent": "",
+        "--inject": [],
+
+        "--disabled-web-shortcuts": false,
+        "--show-system-tray": false,
+        "--use-local-file": false,
+        "--always-on-top": false,
+		"--multi-arch": false,
+        "--dark-mode": false,
+        "--debug": false
+    }
+}

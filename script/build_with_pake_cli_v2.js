@@ -15,8 +15,8 @@ console.log('height: ', process.env.HEIGHT);
 console.log('width: ', process.env.WIDTH);
 console.log('fullscreen: ', process.env.FULLSCREEN);
 console.log('hide-title-bar: ', process.env.HIDE_TITLE_BAR);
-console.log('is multi arch? only for Mac: ', process.env.MULTI_ARCH);
 console.log('targets type? only for Linux: ', process.env.TARGETS);
+console.log('more config: ', process.env.EXT_DATA);
 console.log('===========================\n');
 
 cd('node_modules/pake-cli');
@@ -28,11 +28,6 @@ if (process.env.HIDE_TITLE_BAR === 'true') {
 
 if (process.env.FULLSCREEN === 'true') {
   params = `${params} --fullscreen`;
-}
-
-if (process.env.MULTI_ARCH === 'true') {
-  exec('rustup target add aarch64-apple-darwin');
-  params = `${params} --multi-arch`;
 }
 
 if (process.env.TARGETS) {
@@ -74,6 +69,53 @@ const main = async () => {
     params = await downloadIcon(iconFile);
   } else {
     console.log("Won't download the icon as ICON environment variable is not defined!");
+  }
+
+  // 解析为 JSON
+  const extDataJson = JSON.parse(process.env.EXT_DATA);
+  if(extDataJson['--multi-arch']){
+    exec('rustup target add aarch64-apple-darwin');
+    params = `${params} --multi-arch`;
+  }
+  if(extDataJson['--disabled-web-shortcuts']){
+    params = `${params} --disabled-web-shortcuts`
+  }
+  if(extDataJson['--show-system-tray']){
+    params = `${params} --show-system-tray`
+  }
+  if(extDataJson['--use-local-file']){
+    params = `${params} --use-local-file`
+  }
+  if(extDataJson['--always-on-top']){
+    params = `${params} --always-on-top`
+  }
+  if(extDataJson['--dark-mode']){
+    params = `${params} --dark-mode`
+  }
+  if(extDataJson['--debug']){
+    params = `${params} --debug`
+  }
+
+  if (extDataJson['--activation-shortcut']) {
+    params = `${params} --activation-shortcut=${extDataJson['--activation-shortcut']}`;
+  }
+  if (extDataJson['--installer-language']) {
+    params = `${params} --installer-language=${extDataJson['--installer-language']}`;
+  }
+  if (extDataJson['--system-tray-icon']) {
+    params = `${params} --system-tray-icon=${extDataJson['--system-tray-icon']}`;
+  }
+  if (extDataJson['--proxy-url']) {
+    params = `${params} --proxy-url=${extDataJson['--proxy-url']}`;
+  }
+  if (extDataJson['--app-version']) {
+    params = `${params} --app-version=${extDataJson['--app-version']}`;
+  }
+  if (extDataJson['--user-agent']) {
+    params = `${params} --user-agent=${extDataJson['--user-agent']}`;
+  }
+  if (extDataJson['--inject']) {
+    params = `${params} --inject=${extDataJson['--inject']}`;
   }
 
   console.log('Pake parameters is: ', params);
