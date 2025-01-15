@@ -13,6 +13,7 @@ console.log('name: ', process.env.NAME);
 console.log('icon: ', process.env.ICON);
 console.log('height: ', process.env.HEIGHT);
 console.log('width: ', process.env.WIDTH);
+console.log('proxy_url: ', process.env.PROXY_URL);
 console.log('fullscreen: ', process.env.FULLSCREEN);
 console.log('hide-title-bar: ', process.env.HIDE_TITLE_BAR);
 console.log('is multi arch? only for Mac: ', process.env.MULTI_ARCH);
@@ -21,6 +22,10 @@ console.log('===========================\n');
 
 cd('node_modules/pake-cli');
 let params = `node cli.js ${process.env.URL} --name ${process.env.NAME} --height ${process.env.HEIGHT} --width ${process.env.WIDTH}`;
+
+if (process.env.PROXY_URL) {
+  params = `${params} --proxy-url ${process.env.PROXY_URL}`;
+}
 
 if (process.env.HIDE_TITLE_BAR === 'true') {
   params = `${params} --hide-title-bar`;
