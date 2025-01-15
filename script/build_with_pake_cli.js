@@ -19,6 +19,7 @@ console.log('use-local-file: ', process.env.USE_LOCAL_FILE);
 console.log('hide-title-bar: ', process.env.HIDE_TITLE_BAR);
 console.log('is multi arch? only for Mac: ', process.env.MULTI_ARCH);
 console.log('targets type? only for Linux: ', process.env.TARGETS);
+console.log('more config: ', process.env.EXT_DATA);
 console.log('===========================\n');
 
 cd('node_modules/pake-cli');
