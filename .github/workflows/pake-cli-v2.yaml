@@ -28,14 +28,6 @@ on:
         description: 'Height, Optional'
         required: false
         default: '780'
-      proxy_url:
-        description: 'Proxy Url, Optional'
-        required: false
-      use_local_file:
-        description: 'Use Local File, Optional'
-        required: false
-        type: boolean
-        default: false
       fullscreen:
         description: 'Fullscreen, At startup, Optional'
         required: false
@@ -46,11 +38,9 @@ on:
         required: false
         type: boolean
         default: false
-      multi_arch:
-        description: 'MultiArch, MacOS only, Optional'
+      ext_data:
+        description: 'more config, Optional'
         required: false
-        type: boolean
-        default: false
       targets:
         description: 'Targets, Linux only, Optional'
         required: false
@@ -137,11 +127,9 @@ jobs:
           ICON: ${{ inputs.icon }}
           HEIGHT: ${{ inputs.height }}
           WIDTH: ${{ inputs.width }}
-          PROXY_URL: ${{ inputs.proxy_url }}
           HIDE_TITLE_BAR: ${{ inputs.hide_title_bar }}
-          USE_LOCAL_FILE: ${{ inputs.use_local_file }}
           FULLSCREEN: ${{ inputs.fullscreen }}
-          MULTI_ARCH: ${{ inputs.multi_arch }}
+          EXT_DATA: ${{ inputs.ext_data }}
           TARGETS: ${{ inputs.targets }}
 
       - name: Upload archive
