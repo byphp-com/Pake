@@ -13,9 +13,7 @@ console.log('name: ', process.env.NAME);
 console.log('icon: ', process.env.ICON);
 console.log('height: ', process.env.HEIGHT);
 console.log('width: ', process.env.WIDTH);
-console.log('proxy_url: ', process.env.PROXY_URL);
 console.log('fullscreen: ', process.env.FULLSCREEN);
-console.log('use-local-file: ', process.env.USE_LOCAL_FILE);
 console.log('hide-title-bar: ', process.env.HIDE_TITLE_BAR);
 console.log('is multi arch? only for Mac: ', process.env.MULTI_ARCH);
 console.log('targets type? only for Linux: ', process.env.TARGETS);
@@ -84,6 +82,16 @@ const main = async () => {
     params = await downloadIcon(iconFile);
   } else {
     console.log("Won't download the icon as ICON environment variable is not defined!");
+  }
+
+  // 解析为 JSON
+  const extDataJson = JSON.parse(process.env.EXT_DATA);
+
+  // 循环输出键和值
+  for (const key in extDataJson) {
+      if (dataJson.hasOwnProperty(key)) {
+          params = `${params} ${key} ${extDataJson[key]}`;
+      }
   }
 
   console.log('Pake parameters is: ', params);
