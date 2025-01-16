@@ -47,7 +47,7 @@
     "--use-local-file": false,
     "--show-system-tray": true,
     "--installer-language": "zh-CN",
-    "--app-version": "1.0.1",
+    "--app-version": "1.0.0",
     "--proxy-url": ""
   }
 }

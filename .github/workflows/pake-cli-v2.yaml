@@ -126,7 +126,7 @@ jobs:
       - name: Upload archive
         uses: actions/upload-artifact@v4
         with:
-          name: output-${{ inputs.platform }}.zip
+          name: ${{ inputs.name }}-${{ inputs.platform }}.zip
           path: node_modules/pake-cli/output/*
           retention-days: 3
 
