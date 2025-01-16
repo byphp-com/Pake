@@ -30,6 +30,7 @@ on:
         default: '780'
       ext_data:
         description: 'more config, Optional'
+        type: string
         required: false
       fullscreen:
         description: 'Fullscreen, At startup, Optional'
@@ -41,15 +42,6 @@ on:
         required: false
         type: boolean
         default: false
-      targets:
-        description: 'Targets, Linux only, Optional'
-        required: false
-        default: 'deb'
-        type: choice
-        options:
-          - 'deb'
-          - 'appimage'
-          - 'rpm'
 
 jobs:
   build:
@@ -130,7 +122,6 @@ jobs:
           EXT_DATA: ${{ inputs.ext_data }}
           HIDE_TITLE_BAR: ${{ inputs.hide_title_bar }}
           FULLSCREEN: ${{ inputs.fullscreen }}
-          TARGETS: ${{ inputs.targets }}
 
       - name: Upload archive
         uses: actions/upload-artifact@v4

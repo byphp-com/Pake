@@ -15,7 +15,6 @@ console.log('height: ', process.env.HEIGHT);
 console.log('width: ', process.env.WIDTH);
 console.log('fullscreen: ', process.env.FULLSCREEN);
 console.log('hide-title-bar: ', process.env.HIDE_TITLE_BAR);
-console.log('targets type? only for Linux: ', process.env.TARGETS);
 console.log('more config: ', process.env.EXT_DATA);
 console.log('===========================\n');
 
@@ -28,10 +27,6 @@ if (process.env.HIDE_TITLE_BAR === 'true') {
 
 if (process.env.FULLSCREEN === 'true') {
   params = `${params} --fullscreen`;
-}
-
-if (process.env.TARGETS) {
-  params = `${params} --targets ${process.env.TARGETS}`;
 }
 
 if (process.platform === 'win32' || process.platform === 'linux') {
@@ -113,6 +108,9 @@ const main = async () => {
   }
   if (extDataJson['--user-agent']) {
     params = `${params} --user-agent=${extDataJson['--user-agent']}`;
+  }
+  if (extDataJson['--targets']) {
+    params = `${params} --targets=${extDataJson['--targets']}`;
   }
   if (extDataJson['--inject']) {
     params = `${params} --inject=${extDataJson['--inject']}`;
