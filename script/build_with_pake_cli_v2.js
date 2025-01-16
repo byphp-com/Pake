@@ -29,10 +29,6 @@ if (process.env.FULLSCREEN === 'true') {
   params = `${params} --fullscreen`;
 }
 
-if (process.platform === 'win32' || process.platform === 'linux') {
-  params = `${params} --show-system-tray`;
-}
-
 const downloadIcon = async iconFile => {
   try {
     const response = await axios.get(process.env.ICON, { responseType: 'arraybuffer' });
@@ -75,8 +71,8 @@ const main = async () => {
   if(extDataJson['--disabled-web-shortcuts']){
     params = `${params} --disabled-web-shortcuts`
   }
-  if(extDataJson['--show-system-tray']){
-    params = `${params} --show-system-tray`
+  if (extDataJson['--show-system-tray'] || process.platform === 'win32' || process.platform === 'linux') {
+    params = `${params} --show-system-tray`;
   }
   if(extDataJson['--use-local-file']){
     params = `${params} --use-local-file`
